@@ -1,5 +1,5 @@
-# Notes
-Basic notes app PWA: https://my-kiwi.github.io/notes
+# WebGL
+webGL experiments app PWA: https://my-kiwi.github.io/webgl
 
 ## Install the PWA
 ### Apple iOS
