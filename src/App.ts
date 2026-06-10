@@ -1,4 +1,3 @@
-import { Experiments } from './Experiments';
 import { GithubLink } from './GithubLink';
 
 export const App = (): string => {
@@ -6,8 +5,17 @@ export const App = (): string => {
     <main>
       ${Experiments()}
     </main>
-    <footer">
+    <footer>
       ${GithubLink()}
     </footer>
     `;
+};
+
+export const Experiments = () => {
+  requestAnimationFrame(() => {
+    import('./experiments/triangle');
+  });
+  return `
+    <canvas id="triangleCanvas"></canvas>
+  `;
 };
