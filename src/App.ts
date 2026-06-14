@@ -12,18 +12,16 @@ export const App = (): string => {
 };
 
 export const Experiments = () => {
+  // add new on top of list
+  const modules = ['pyramid', 'cube', 'circle', 'square', 'triangle'];
+
+  // Load all modules asynchronously
   requestAnimationFrame(() => {
-    import('./experiments/triangle');
-    import('./experiments/square');
-    import('./experiments/circle');
-    import('./experiments/cube');
-    import('./experiments/pyramid');
+    modules.forEach((module) => {
+      import(`./experiments/${module}`);
+    });
   });
-  return `
-  <canvas id="pyramid-canvas"></canvas>
-  <canvas id="cube-canvas"></canvas>
-  <canvas id="circle-canvas"></canvas>
-  <canvas id="square-canvas"></canvas>
-  <canvas id="triangle-canvas"></canvas>
-  `;
+
+  // Return canvas elements for each module
+  return `${modules.map((module) => `<canvas id="${module}-canvas"></canvas>`).join('\n')}`;
 };
