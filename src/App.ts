@@ -19,9 +19,9 @@ export const Experiments = () => {
     import('./experiments/cube');
   });
   return `
-    <canvas id="triangle-canvas"></canvas>
-    <canvas id="square-canvas"></canvas>
-    <canvas id="circle-canvas"></canvas>
-    <canvas id="cube-canvas"></canvas>
+  <canvas id="cube-canvas"></canvas>
+  <canvas id="circle-canvas"></canvas>
+  <canvas id="square-canvas"></canvas>
+  <canvas id="triangle-canvas"></canvas>
   `;
 };
