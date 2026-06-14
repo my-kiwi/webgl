@@ -13,7 +13,18 @@ export const App = (): string => {
 
 export const Experiments = () => {
   // add new on top of list
-  const modules = ['pyramid', 'torus', 'sphere', 'cube', 'circle', 'square', 'triangle'];
+  const modules = [
+    'pyramid',
+    'torus',
+    'sphere',
+    'cylinder',
+    'helix',
+    'star',
+    'cube',
+    'circle',
+    'square',
+    'triangle',
+  ];
 
   // Load all modules asynchronously
   requestAnimationFrame(() => {
