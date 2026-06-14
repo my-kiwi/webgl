@@ -3,6 +3,6 @@ import { App } from './App';
 
 describe('App', () => {
   it('renders hello world', () => {
-    expect(App()).toContain('<canvas id="triangleCanvas"></canvas>');
+    expect(App()).toContain('<canvas id="triangle-canvas"></canvas>');
   });
 });
