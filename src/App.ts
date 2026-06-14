@@ -28,9 +28,16 @@ export const Experiments = () => {
 
   // Load all modules asynchronously
   requestAnimationFrame(() => {
-    modules.forEach((module) => {
-      import(`./experiments/${module}`);
-    });
+    import(`./experiments/pyramid`);
+    import(`./experiments/torus`);
+    import(`./experiments/sphere`);
+    import(`./experiments/cylinder`);
+    import(`./experiments/helix`);
+    import(`./experiments/star`);
+    import(`./experiments/cube`);
+    import(`./experiments/circle`);
+    import(`./experiments/square`);
+    import(`./experiments/triangle`);
   });
 
   // Return canvas elements for each module
