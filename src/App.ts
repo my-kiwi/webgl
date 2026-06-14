@@ -14,8 +14,10 @@ export const App = (): string => {
 export const Experiments = () => {
   requestAnimationFrame(() => {
     import('./experiments/triangle');
+    import('./experiments/square');
   });
   return `
     <canvas id="triangleCanvas"></canvas>
+    <canvas id="squareCanvas"></canvas>
   `;
 };
