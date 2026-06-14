@@ -11,7 +11,7 @@ if (!gl) {
   throw new Error('WebGL non supporté');
 }
 
-gl.clearColor(0.0, 0.0, 0.0, 1.0);
+gl!.clearColor(0.0, 0.0, 0.0, 1.0);
 canvas.style.display = 'block';
 canvas.style.width = '100%';
 canvas.style.height = '240px';
@@ -36,29 +36,29 @@ const fragmentShaderSource = `
 `;
 
 function compileShader(gl: WebGLRenderingContext, source: string, type: number): WebGLShader {
-  const shader = gl.createShader(type)!;
-  gl.shaderSource(shader, source);
-  gl.compileShader(shader);
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.error('Erreur de compilation du shader:', gl.getShaderInfoLog(shader));
-    gl.deleteShader(shader);
+  const shader = gl!.createShader(type)!;
+  gl!.shaderSource(shader, source);
+  gl!.compileShader(shader);
+  if (!gl!.getShaderParameter(shader, gl!.COMPILE_STATUS)) {
+    console.error('Erreur de compilation du shader:', gl!.getShaderInfoLog(shader));
+    gl!.deleteShader(shader);
     throw new Error('Erreur de compilation du shader');
   }
   return shader;
 }
 
-const vertexShader = compileShader(gl, vertexShaderSource, gl.VERTEX_SHADER);
-const fragmentShader = compileShader(gl, fragmentShaderSource, gl.FRAGMENT_SHADER);
+const vertexShader = compileShader(gl, vertexShaderSource, gl!.VERTEX_SHADER);
+const fragmentShader = compileShader(gl, fragmentShaderSource, gl!.FRAGMENT_SHADER);
 
-const program = gl.createProgram()!;
-gl.attachShader(program, vertexShader);
-gl.attachShader(program, fragmentShader);
-gl.linkProgram(program);
-if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-  console.error('Erreur de linkage du programme:', gl.getProgramInfoLog(program));
+const program = gl!.createProgram()!;
+gl!.attachShader(program, vertexShader);
+gl!.attachShader(program, fragmentShader);
+gl!.linkProgram(program);
+if (!gl!.getProgramParameter(program, gl!.LINK_STATUS)) {
+  console.error('Erreur de linkage du programme:', gl!.getProgramInfoLog(program));
   throw new Error('Erreur de linkage du programme');
 }
-gl.useProgram(program);
+gl!.useProgram(program);
 
 const turns = 4;
 const segments = 120;
@@ -85,25 +85,25 @@ for (let i = 0, j = 0; i < positions.length; i += 3, j += 6) {
   vertexData[j + 5] = colors[i + 2];
 }
 
-const vertexBuffer = gl.createBuffer()!;
-gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
+const vertexBuffer = gl!.createBuffer()!;
+gl!.bindBuffer(gl!.ARRAY_BUFFER, vertexBuffer);
+gl!.bufferData(gl!.ARRAY_BUFFER, vertexData, gl!.STATIC_DRAW);
 
-const aPosition = gl.getAttribLocation(program, 'aPosition');
-const aColor = gl.getAttribLocation(program, 'aColor');
+const aPosition = gl!.getAttribLocation(program, 'aPosition');
+const aColor = gl!.getAttribLocation(program, 'aColor');
 const stride = 6 * Float32Array.BYTES_PER_ELEMENT;
 
-gl.enableVertexAttribArray(aPosition);
-gl.vertexAttribPointer(aPosition, 3, gl.FLOAT, false, stride, 0);
+gl!.enableVertexAttribArray(aPosition);
+gl!.vertexAttribPointer(aPosition, 3, gl!.FLOAT, false, stride, 0);
 
-gl.enableVertexAttribArray(aColor);
-gl.vertexAttribPointer(aColor, 3, gl.FLOAT, false, stride, 3 * Float32Array.BYTES_PER_ELEMENT);
+gl!.enableVertexAttribArray(aColor);
+gl!.vertexAttribPointer(aColor, 3, gl!.FLOAT, false, stride, 3 * Float32Array.BYTES_PER_ELEMENT);
 
-const uMVP = gl.getUniformLocation(program, 'uMVP');
+const uMVP = gl!.getUniformLocation(program, 'uMVP');
 
-gl.enable(gl.DEPTH_TEST);
+gl!.enable(gl!.DEPTH_TEST);
 
-gl.clearColor(0.0, 0.0, 0.0, 1.0);
+gl!.clearColor(0.0, 0.0, 0.0, 1.0);
 
 function degToRad(degrees: number): number {
   return (degrees * Math.PI) / 180;
@@ -213,7 +213,7 @@ function resizeCanvasToDisplaySize(canvas: HTMLCanvasElement) {
   if (canvas.width !== width || canvas.height !== height) {
     canvas.width = width;
     canvas.height = height;
-    gl.viewport(0, 0, width, height);
+    gl!.viewport(0, 0, width, height);
   }
 }
 
@@ -228,9 +228,9 @@ function drawScene() {
   const viewProjectionMatrix = multiplyMatrices(projectionMatrix, cameraMatrix);
   const mvpMatrix = multiplyMatrices(viewProjectionMatrix, modelMatrix);
 
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  gl.uniformMatrix4fv(uMVP, false, mvpMatrix);
-  gl.drawArrays(gl.LINE_STRIP, 0, positions.length / 3);
+  gl!.clear(gl!.COLOR_BUFFER_BIT | gl!.DEPTH_BUFFER_BIT);
+  gl!.uniformMatrix4fv(uMVP, false, mvpMatrix);
+  gl!.drawArrays(gl!.LINE_STRIP, 0, positions.length / 3);
   requestAnimationFrame(drawScene);
 }
 
