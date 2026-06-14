@@ -17,7 +17,7 @@ export const Experiments = () => {
     import('./experiments/square');
   });
   return `
-    <canvas id="triangleCanvas"></canvas>
-    <canvas id="squareCanvas"></canvas>
+    <canvas id="triangle-canvas"></canvas>
+    <canvas id="square-canvas"></canvas>
   `;
 };

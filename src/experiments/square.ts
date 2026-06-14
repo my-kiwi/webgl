@@ -1,4 +1,4 @@
-const canvas = document.getElementById('squareCanvas') as HTMLCanvasElement;
+const canvas = document.getElementById('square-canvas') as HTMLCanvasElement;
 const gl = canvas.getContext('webgl');
 
 if (!gl) {

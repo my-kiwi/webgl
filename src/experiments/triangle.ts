@@ -1,5 +1,5 @@
 // 1. Récupère l'élément canvas du DOM et le cast en HTMLCanvasElement
-const canvas = document.getElementById('triangleCanvas') as HTMLCanvasElement;
+const canvas = document.getElementById('triangle-canvas') as HTMLCanvasElement;
 // 2. Récupère le contexte WebGL du canvas. Si non supporté, gl sera null.
 const gl = canvas.getContext('webgl');
 
